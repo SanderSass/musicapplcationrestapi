@@ -3,8 +3,8 @@ const pool = require("../../config/database");
 module.exports = {
     create: (data, callBack) => {
         pool.query(
-            `INSERT INTO songs (song_name) VALUES (?)`,
-            [data.songs_name],
+            `INSERT INTO songs(song_name) VALUES(?)`,
+            [data.song_name],
             (error, results, fields) => {
                 if (error) {
                     return callBack(error);
@@ -40,7 +40,7 @@ module.exports = {
     updateSong: (data, callBack) => {
         pool.query(
             `UPDATE songs set song_name=? WHERE id=?`,
-            [data.songs_name],
+            [data.songs_name, data.id],
             (error, results, fields) => {
                 if (error) {
                     return callBack(error);
