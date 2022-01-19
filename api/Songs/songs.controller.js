@@ -5,17 +5,18 @@ module.exports = {
         const body = req.body;
         // here we migt to add encryption
         create(body, (err, results) => {
-            if (err) {
+            if (!err) {
                 console.log(err);
                 return res.status(500).json({
                     success: 0,
                     message: "Database connection error!"
                 });
+            } else {
+                return res.status(300).json({
+                    success: 1,
+                    data: results
+                });
             }
-            return res.status(300).json({
-                success: 1,
-                data: results
-            });
         });
     },
     getSongById: (req, res) => {
@@ -71,16 +72,17 @@ module.exports = {
                 console.log(err);
                 return;
             }
-            if (!results) {
+            if (results) {
                 return res.json({
                     success: 0,
                     message: "Record not found!"
                 });
+            } else {
+                return res.json({
+                    success: 1,
+                    message: "Song is deleted successfully!"
+                });
             }
-            return res.json({
-                success: 1,
-                message: "Song is deleted successfully!"
-            });
         });
     },
 };
