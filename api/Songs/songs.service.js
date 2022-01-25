@@ -4,7 +4,7 @@ module.exports = {
     create: (data, callBack) => {
         pool.query(
             `INSERT INTO songs(UserID, song_name) VALUES(?, ?)`,
-            [data.UserID, data.song_name],
+            [data.UserID, data.songName],
             (error, results, fields) => {
                 if (error) {
                     return callBack(error);
@@ -16,7 +16,7 @@ module.exports = {
     },
     getSongs: callBack => {
         pool.query(
-            `SELECT id, UserID, song_name FROM songs`,
+            `SELECT song_name FROM songs`,
             [],
             (error, results, fields) => {
                 if (error) {
@@ -28,7 +28,7 @@ module.exports = {
     },
     getSongById: (id, callBack) => {
         pool.query(
-            `SELECT id, UserID, song_name FROM songs WHERE id=?`,
+            `SELECT song_name FROM songs WHERE id=?`,
             [id],
             (error, results, fields) => {
                 if (error) {
@@ -41,7 +41,7 @@ module.exports = {
     updateSong: (data, callBack) => {
         pool.query(
             `UPDATE songs SET song_name=? WHERE id=?`,
-            [data.songs_name, data.id],
+            [data.songName, data.id],
             (error, results, fields) => {
                 if (error) {
                     return callBack(error);
@@ -52,8 +52,8 @@ module.exports = {
     },
     deleteSong: (data, callBack) => {
         pool.query(
-            `DELETE FROM songs WHERE id=?`,
-            [data.id],
+            `DELETE FROM songs WHERE song_name=?`,
+            [data.songName],
             (error, results, fields) => {
                 if (error) {
                     return callBack(error);
