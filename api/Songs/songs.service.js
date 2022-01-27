@@ -1,9 +1,17 @@
+require("dotenv").config();
 const pool = require("../../config/database");
+
+const publishSongs = process.env.PUBLISH_SONGS;
+const readSongs = process.env.READ_SONGS;
+const readSongsById = process.env.READ_SONGS_ID;
+const readSongsByUserId = process.env.READ_SONGS_SECRET;
+const editSongs = process.env.UPDATE_SONG;
+const removeSong = process.env.DELETE_SONG;
 
 module.exports = {
     create: (data, callBack) => {
         pool.query(
-            `INSERT INTO songs(UserID, song_name) VALUES(?, ?)`,
+            publishSongs,
             [data.UserID, data.songName],
             (error, results, fields) => {
                 if (error) {
@@ -16,7 +24,7 @@ module.exports = {
     },
     getSongs: callBack => {
         pool.query(
-            `SELECT song_name FROM songs`,
+            readSongs,
             [],
             (error, results, fields) => {
                 if (error) {
@@ -28,8 +36,20 @@ module.exports = {
     },
     getSongById: (id, callBack) => {
         pool.query(
-            `SELECT song_name FROM songs WHERE id=?`,
+            readSongsById,
             [id],
+            (error, results, fields) => {
+                if (error) {
+                    return callBack(error);
+                }
+                return callBack(null, results[0]);
+            }
+        );
+    },
+    getSongByUserId: (UserID, callBack) => {
+        pool.query(
+            readSongsByUserId,
+            [UserID],
             (error, results, fields) => {
                 if (error) {
                     return callBack(error);
@@ -40,7 +60,7 @@ module.exports = {
     },
     updateSong: (data, callBack) => {
         pool.query(
-            `UPDATE songs SET song_name=? WHERE id=?`,
+            editSongs,
             [data.songName, data.id],
             (error, results, fields) => {
                 if (error) {
@@ -52,7 +72,7 @@ module.exports = {
     },
     deleteSong: (data, callBack) => {
         pool.query(
-            `DELETE FROM songs WHERE song_name=?`,
+            removeSong,
             [data.songName],
             (error, results, fields) => {
                 if (error) {

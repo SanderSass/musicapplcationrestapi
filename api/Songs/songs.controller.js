@@ -1,4 +1,6 @@
-const { create, getSongs, getSongById, updateSong, deleteSong } = require("./songs.service");
+const { create, getSongs, getSongById, getSongByUserId, updateSong, deleteSong } = require("./songs.service");
+
+const { sign } = require("jsonwebtoken")
 
 module.exports = {
     createSong: (req, res) => {
@@ -17,6 +19,18 @@ module.exports = {
                     data: results
                 });
             }
+        });
+    },
+    getSongs: (req, res) => {
+        getSongs((err, results)=> {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            return res.json({
+                success: 1,
+                data: results
+            });
         });
     },
     getSongById: (req, res) => {
@@ -38,11 +52,18 @@ module.exports = {
             });
         });
     },
-    getSongs: (req, res) => {
-        getSongs((err, results)=> {
+    getSongByUserId: (req, res) => {
+        const UserId = req.params.UserId;
+        getSongByUserId(UserId, (err, results)=> {
             if (err) {
                 console.log(err);
                 return;
+            }
+            if (!results) {
+                return res.json({
+                    success: 0,
+                    message: "Record not found!"
+                });
             }
             return res.json({
                 success: 1,
@@ -84,5 +105,5 @@ module.exports = {
                 });
             }
         });
-    },
+    }
 };
