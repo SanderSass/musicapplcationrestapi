@@ -1,7 +1,5 @@
 const { create, getSongs, getSongById, getSongByUserId, updateSong, deleteSong } = require("./songs.service");
 
-const { sign } = require("jsonwebtoken")
-
 module.exports = {
     createSong: (req, res) => {
         const body = req.body;
@@ -53,7 +51,7 @@ module.exports = {
         });
     },
     getSongByUserId: (req, res) => {
-        const UserId = req.params.UserId;
+        const UserId = req.params.UserID;
         getSongByUserId(UserId, (err, results)=> {
             if (err) {
                 console.log(err);
@@ -67,7 +65,7 @@ module.exports = {
             }
             return res.json({
                 success: 1,
-                data: results
+                UserId: results
             });
         });
     },

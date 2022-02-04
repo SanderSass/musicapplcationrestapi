@@ -2,7 +2,6 @@ require("dotenv").config();
 
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const cors = require("cors")
 const fs = require("fs");
 
 const app = express();
@@ -10,12 +9,13 @@ const app = express();
 const port = process.env.APP_PORT;
 const code = process.env.ENC_SECRET;
 const url = process.env.URL_KEY;
-const route = process.env.ROUTE_R;
+const rootSong = process.env.ROUTE_R;
+const rootKey = process.env.ROUTE_K;
 
-app.use(cors())
 app.use(express.json())
 
 const songRouter = require("./api/Songs/songs.router");
+const keyRouter = require("./api/Keys/keys.router");
 
 app.get(url, (req, res) => {
     let privateKey = fs.readFileSync(code, "utf8");
@@ -24,9 +24,13 @@ app.get(url, (req, res) => {
 });
 
 //define root route
-app.use(route, isAuthorized, songRouter,(req, res) => {
+app.use(rootSong, isAuthorized, songRouter,(req, res) => {
     res.json({"message": "secret"})
 });
+
+app.use(rootKey, isAuthorized, keyRouter, (req, res) => {
+    res.json({"message": "secret"})
+})
 
 /**
  * JWT key
