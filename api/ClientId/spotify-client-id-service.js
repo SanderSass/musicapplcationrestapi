@@ -2,6 +2,7 @@ require("dotenv").config();
 const pool = require("../../config/database");
 
 const saveClientID = process.env.SAVE_CLIENTID;
+const getClientID = process.env.GET_CLIENTID;
 
 module.exports = {
     create: (data, callBack) => {
@@ -13,4 +14,17 @@ module.exports = {
             }
         });
     },
+
+    read: (UserId, callBack) => {
+        pool.query(
+            getClientID,
+            [UserId],
+            (error, results, fields) => {
+                if (error) {
+                    return callBack(error);
+                }
+                return callBack(null, results[0]);
+            }
+        );
+    }
 };

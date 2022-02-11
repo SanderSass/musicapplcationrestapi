@@ -19,17 +19,19 @@ const songRouter = require("./api/Songs/songs.router");
 const spotifyClientIDRouter = require("./api/ClientId/spotify-client-id-router");
 const keyRouter = require("./api/Keys/keys.router");
 
+//Generates the api JWT token 
 app.get(url, (req, res) => {
     let privateKey = fs.readFileSync(code, "utf8");
     let token = jwt.sign({"body": "stuff"}, privateKey, {algorithm: "HS256"});
     res.send(token);
 });
 
-//define root route
+//Root of Songs
 app.use(rootSong, isAuthorized, songRouter,(req, res) => {
     res.json({"message": "secret"})
 });
 
+//Root of Spotify client ID
 app.use(rootClientId, isAuthorized, spotifyClientIDRouter,(req, res) => {
     res.json({"message": "secret"})
 });

@@ -1,4 +1,4 @@
-const {create} = require("./spotify-client-id-service")
+const {create, read} = require("./spotify-client-id-service")
 
 module.exports = {
     postClientID: (req, res) => {
@@ -18,4 +18,24 @@ module.exports = {
             }
         });
     },
+
+    getCliendID: (req, res) => {
+        const UserID = req.params.UserID;
+        read(UserID, (err, results) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            if (!results) {
+                return res.json({
+                    success: 0,
+                    message: "Record not found!"
+                });
+            }
+            return res.json({
+                success: 1,
+                data: results
+            });
+        });
+    }
 };
