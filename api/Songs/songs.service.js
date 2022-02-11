@@ -46,10 +46,10 @@ module.exports = {
             }
         );
     },
-    getSongByUserId: (UserID, callBack) => {
+    getSongByUserId: (UserId, callBack) => {
         pool.query(
             readSongsByUserId,
-            [UserID],
+            [UserId],
             (error, results, fields) => {
                 if (error) {
                     return callBack(error);

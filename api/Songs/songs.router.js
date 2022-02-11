@@ -5,7 +5,7 @@ const router = require("express").Router();
 // All routed CRUD calls
 router.post("/", createSong);
 router.get("/", getSongs);
-router.get("/:id", getSongById);
+// router.get("/:id", getSongById);
 router.get("/user/:UserId", getSongByUserId);
 router.patch("/", updateSong);
 router.delete("/", deleteSong);

@@ -51,7 +51,7 @@ module.exports = {
         });
     },
     getSongByUserId: (req, res) => {
-        const UserId = req.params.UserID;
+        const UserId = req.params.UserId;
         getSongByUserId(UserId, (err, results)=> {
             if (err) {
                 console.log(err);
@@ -65,7 +65,7 @@ module.exports = {
             }
             return res.json({
                 success: 1,
-                UserId: results
+                data: results
             });
         });
     },
