@@ -6,7 +6,7 @@ const getClientID = process.env.GET_CLIENTID;
 
 module.exports = {
     create: (data, callBack) => {
-        pool.query(saveClientID,[data.UserID, data.ClientID], (error, results) => {
+        pool.query(saveClientID,[data.UserID, data.ClientID, data.iv], (error, results) => {
             if(error) {
                 return callBack(error);
             } else {
