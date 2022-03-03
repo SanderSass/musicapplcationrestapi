@@ -1,0 +1,35 @@
+{
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#", 
+	"$id": "https://example.com/object1646331330.json", 
+	"title": "Root", 
+	"type": "object",
+	"required": [
+		"success",
+		"data"
+	],
+	"properties": {
+		"success": {
+			"$id": "#root/success", 
+			"title": "Success", 
+			"type": "integer"
+		},
+		"data": {
+			"$id": "#root/data", 
+			"title": "Data", 
+			"type": "object",
+			"required": [
+				"ClientID"
+			],
+			"properties": {
+				"ClientID": {
+					"$id": "#root/data/ClientID", 
+					"title": "Clientid", 
+					"type": "string",
+					"pattern": "^.*$"
+				}
+			}
+		}
+
+	}
+}
