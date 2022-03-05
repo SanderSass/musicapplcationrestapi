@@ -1,5 +1,8 @@
 require("dotenv").config();
 
+const jwt = require("jsonwebtoken");
+const fs = require("fs");
+
 const code = process.env.ENC_SECRET;
 
 /**
@@ -25,3 +28,5 @@ const code = process.env.ENC_SECRET;
         res.status(500).json({ error: "Not Authorized" })
     }
 }
+
+module.exports = isAuthorized;

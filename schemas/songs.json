@@ -1,35 +1,25 @@
 {
-	"definitions": {},
 	"$schema": "http://json-schema.org/draft-07/schema#", 
-	"$id": "https://example.com/object1646331330.json", 
-	"title": "Root", 
+	"$id": "https://example.com/object1646479842.json", 
+	"title": "List of Songs",
+	"description": "This document records the details of an user songs",
 	"type": "object",
 	"required": [
-		"success",
-		"data"
+		"UserID",
+		"ClientID"
 	],
 	"properties": {
-		"success": {
-			"$id": "#root/success", 
-			"title": "Success", 
-			"type": "integer"
+		"UserID": {
+			"$id": "#root/UserID", 
+			"title": "Userid", 
+			"type": "string",
+			"pattern": "^.*$"
 		},
-		"data": {
-			"$id": "#root/data", 
-			"title": "Data", 
-			"type": "object",
-			"required": [
-				"ClientID"
-			],
-			"properties": {
-				"ClientID": {
-					"$id": "#root/data/ClientID", 
-					"title": "Clientid", 
-					"type": "string",
-					"pattern": "^.*$"
-				}
-			}
+		"ClientID": {
+			"$id": "#root/ClientID", 
+			"title": "Clientid", 
+			"type": "string",
+			"pattern": "^.*$"
 		}
-
 	}
 }
