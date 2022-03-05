@@ -1,23 +1,20 @@
 require("dotenv").config();
 
 const express = require("express");
-const jwt = require("jsonwebtoken");
-const fs = require("fs");
-
-const app = express();
+const isAuthorized = require("./middleware/authentication");
+const songRouter = require("./api/Songs/songs.router");
+const spotifyClientIDRouter = require("./api/ClientId/spotify-client-id-router");
+const keyRouter = require("./api/Keys/keys.router");
 
 const port = process.env.APP_PORT;
-const code = process.env.ENC_SECRET;
 const url = process.env.URL_KEY;
 const rootSong = process.env.ROUTE_R;
 const rootClientId = process.env.ROUTE_C
 const rootKey = process.env.ROUTE_K;
 
-app.use(express.json())
+const app = express();
 
-const songRouter = require("./api/Songs/songs.router");
-const spotifyClientIDRouter = require("./api/ClientId/spotify-client-id-router");
-const keyRouter = require("./api/Keys/keys.router");
+app.use(express.json());
 
 //Generates the api JWT token 
 app.get(url, (req, res) => {
@@ -40,29 +37,35 @@ app.use(rootKey, isAuthorized, keyRouter, (req, res) => {
     res.json({"message": "secret"})
 })
 
-/**
- * JWT key
- * @param {*} req
- * @param {*} res
- * @param {*} next
- */
- function isAuthorized(req, res, next) {
-    if (typeof req.headers.authorization !== "undefined") {
-        let token = req.headers.authorization.split(" ")[1];
-        let privateKey = fs.readFileSync(code, "utf8");
 
-        jwt.verify(token, privateKey, {algorithm: "HS256"}, (err, decoded) => {
-            if (err) {
-                res.status(500).json({ error: "Not Authorized" })
-            }
-            console.log(decoded);
+const jwt = require("jsonwebtoken");
+const fs = require("fs");
 
-            return next();
-        })
-    } else {
-        res.status(500).json({ error: "Not Authorized" })
-    }
-}
+const code = process.env.ENC_SECRET;
+
+// /**
+//  * JWT key
+//  * @param {*} req 
+//  * @param {*} res 
+//  * @param {*} next 
+//  */
+//  function isAuthorized(req, res, next) {
+//     if (typeof req.headers.authorization !== "undefined") {
+//         let token = req.headers.authorization.split(" ")[1];
+//         let privateKey = fs.readFileSync(code, "utf8");
+        
+//         jwt.verify(token, privateKey, {algorithm: "HS256"}, (err, decoded) => {
+//             if (err) {
+//                 res.status(500).json({ error: "Not Authorized" })
+//             }
+//             console.log(decoded);
+
+//             return next();
+//         })
+//     } else {
+//         res.status(500).json({ error: "Not Authorized" })
+//     }
+// }
 
 app.listen(port, () => {
     console.log("Server up and running on port: ", port);
