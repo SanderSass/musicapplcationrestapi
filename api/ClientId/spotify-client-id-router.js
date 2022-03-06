@@ -8,7 +8,7 @@ const spotifySchema = require("../../schemas/clientid");
  * @swagger
  * /clientId:
  *  post:
- *      description: Use it to insert user spotify client id with user identification
+ *      description: Use it to insert the user spotify client id with user identification
  *      responses:
  *          '201':
  *              description: The request succeeded
@@ -21,7 +21,7 @@ router.post("/clientId", validateDto(spotifySchema),postClientID);
  * @swagger
  * /clientId/:UserID:
  *  get:
- *      description: Look the JWT token route from .env file. This route will create a jwt token to get access to the API routes
+ *      description: Use it to retrieve the user spotify client id with user identification
  *      responses:
  *          '200':
  *              description: A successful response
