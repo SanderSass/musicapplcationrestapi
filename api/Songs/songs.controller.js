@@ -21,8 +21,8 @@ module.exports = {
         });
     },
     getSongByUserId: (req, res) => {
-        const UserId = req.params.UserId;
-        getSongByUserId(UserId, (err, results)=> {
+        const UserID = req.params.UserID;
+        getSongByUserId(UserID, (err, results)=> {
             if (err) {
                 console.log(err);
                 return res.status(400).json({

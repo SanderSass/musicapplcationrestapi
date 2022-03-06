@@ -7,7 +7,7 @@ const songSchema = require("../../schemas/songs");
 
 // All routed CRUD calls
 router.post("/", validateDto(songSchema), createSong);
-router.get("/user/:UserId", validateDto(songSchema), getSongByUserId);
+router.get("/user/:UserID", getSongByUserId);
 router.patch("/", updateSong);
 router.delete("/", deleteSong);
 
