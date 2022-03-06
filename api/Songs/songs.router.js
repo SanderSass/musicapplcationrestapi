@@ -1,4 +1,4 @@
-const { createSong, getSongById, getSongs, getSongByUserId,  deleteSong, updateSong } = require("./songs.controller");
+const { createSong, getSongByUserId,  deleteSong, updateSong } = require("./songs.controller");
 
 const router = require("express").Router();
 const validateDto = require("../../middleware/validate-dto");
@@ -7,9 +7,7 @@ const songSchema = require("../../schemas/songs");
 
 // All routed CRUD calls
 router.post("/", validateDto(songSchema), createSong);
-router.get("/", getSongs);
-// router.get("/:id", getSongById);
-router.get("/user/:UserId", getSongByUserId);
+router.get("/user/:UserId", validateDto(songSchema), getSongByUserId);
 router.patch("/", updateSong);
 router.delete("/", deleteSong);
 

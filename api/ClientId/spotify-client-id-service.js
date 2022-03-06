@@ -15,10 +15,10 @@ module.exports = {
         });
     },
 
-    read: (UserId, callBack) => {
+    read: (UserID, callBack) => {
         pool.query(
             getClientID,
-            [UserId],
+            [UserID],
             (error, results, fields) => {
                 if (error) {
                     return callBack(error);

@@ -1,18 +1,14 @@
 const ajvInstance = require('./ajv-instance');
 
-const schema = {
+const keys = {
   type: "object",
-  title: "List of Songs",
+  title: "Keys",
   description: "This document records the details of an user songs",
   properties: {
     UserID: {
         title: "UserID", 
         type: "string"
     },
-    songName: {
-        title: "songName", 
-        type: "string",
-    }
   },
   required: [		
       "UserID",
@@ -20,4 +16,4 @@ const schema = {
   additionalProperties: false,
 };
 
-module.exports = ajvInstance.compile(schema);
+module.exports = ajvInstance.compile(keys);

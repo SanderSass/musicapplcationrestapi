@@ -14,37 +14,13 @@ module.exports = {
             publishSongs,
             [data.UserID, data.songName],
             (error, results, fields) => {
-                if (error) {
+                if (!error) {
                     return callBack(error);
                 } else {
                     return callBack(results)
                 }
             }
         )
-    },
-    getSongs: callBack => {
-        pool.query(
-            readSongs,
-            [],
-            (error, results, fields) => {
-                if (error) {
-                    return callBack(error);
-                }
-                return callBack(null, results);
-            }
-        );
-    },
-    getSongById: (id, callBack) => {
-        pool.query(
-            readSongsById,
-            [id],
-            (error, results, fields) => {
-                if (error) {
-                    return callBack(error);
-                }
-                return callBack(null, results[0]);
-            }
-        );
     },
     getSongByUserId: (UserId, callBack) => {
         pool.query(
@@ -66,7 +42,7 @@ module.exports = {
                 if (error) {
                     return callBack(error);
                 }
-                return callBack(null, results[0])
+                return callBack(null, results)
             }
         )
     },
@@ -78,7 +54,7 @@ module.exports = {
                 if (error) {
                     return callBack(error);
                 }
-                return callBack(null, results[0])
+                return callBack(null, results)
             }
         )
     }

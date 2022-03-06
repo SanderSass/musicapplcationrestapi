@@ -8,7 +8,12 @@ const pool = createPool({
     user: process.env.DB_USER, 
     password: process.env.DB_PASS,
     database: process.env.MYSQL_DB,
-    connectionLimit: 10
+    connectionLimit: 100
+});
+
+pool.getConnection(function(err){
+    if (err) throw err;
+  console.log("Connected!");
 });
 
 module.exports = pool;

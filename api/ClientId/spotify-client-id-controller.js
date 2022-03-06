@@ -6,12 +6,12 @@ module.exports = {
         create(body, (err, results) => {
             if(err) {
                 console.log(err);
-                return res.status(500).json({
+                return res.status(400).json({
                     success: 0,
                     message: err.code
                 });
             } else {
-                return res.status(300).json({
+                return res.status(201).json({
                     success: 1,
                     data: results
                 });
@@ -24,15 +24,18 @@ module.exports = {
         read(UserID, (err, results) => {
             if (err) {
                 console.log(err);
-                return;
+                return res.status(400).json({
+                    success: 0,
+                    message: err.code
+                });
             }
             if (!results) {
-                return res.json({
+                return res.status(204).json({
                     success: 0,
                     message: "Record not found!"
                 });
             }
-            return res.json({
+            return res.status(200).json({
                 success: 1,
                 data: results
             });
