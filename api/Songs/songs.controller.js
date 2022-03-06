@@ -27,7 +27,7 @@ module.exports = {
                 console.log(err);
                 return res.status(400).json({
                     success: 0,
-                    data: "Bad Request to GET: " + err.code
+                    data: "Bad GET Request: " + err.code
                 });
             } else if (!results) {
                 return res.status(204).json({
@@ -49,7 +49,7 @@ module.exports = {
                 console.log(err);
                 return res.status(400).json({
                     success: 0,
-                    data: "Bad Request to UPDATE" + err.code
+                    data: "Bad UPDATE Request" + err.code
                 });
             }
             if (!results) {
@@ -72,7 +72,7 @@ module.exports = {
                 console.log(err);
                 return res.status(400).json({
                     success: 0,
-                    data: "Bad Request to DELETE" + err.code
+                    data: "Bad DELETE Request" + err.code
                 });
             }
             if (!results) {
