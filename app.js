@@ -25,16 +25,16 @@ app.get(url, (req, res) => {
 
 //Root of Songs
 app.use(rootSong, isAuthorized, songRouter,(req, res) => {
-    res.json({"message": "secret"})
+    res.status(401).json({"message": "unauhorized"})
 });
 
 //Root of Spotify client ID
 app.use(rootClientId, isAuthorized, spotifyClientIDRouter,(req, res) => {
-    res.json({"message": "secret"})
+    res.status(401).json({"message": "unauhorized"})
 });
 
 app.use(rootKey, isAuthorized, keyRouter, (req, res) => {
-    res.json({"message": "secret"})
+    res.status(401).json({"message": "unauhorized"})
 })
 
 
