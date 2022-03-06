@@ -6,7 +6,7 @@ const fs = require("fs");
 const code = process.env.ENC_SECRET;
 
 /**
- * JWT key
+ * JWT key is used to auhtize the API connection.
  * @param {*} req 
  * @param {*} res 
  * @param {*} next 
@@ -18,14 +18,14 @@ const code = process.env.ENC_SECRET;
         
         jwt.verify(token, privateKey, {algorithm: "HS256"}, (err, decoded) => {
             if (err) {
-                res.status(500).json({ error: "Not Authorized" })
+                res.status(401).json({ error: "Not Authorized" })
             }
             console.log(decoded);
 
             return next();
         })
     } else {
-        res.status(500).json({ error: "Not Authorized" })
+        res.status(401).json({ error: "Not Authorized" })
     }
 }
 
