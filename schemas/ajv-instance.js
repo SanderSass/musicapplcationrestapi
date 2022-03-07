@@ -1,7 +1,12 @@
 const Ajv = require("ajv");
 const addFormats = require("ajv-formats");
+const RE2 = require("re2");
+//const fs = require("fs");
+//const path = require("path");
+//const standaloneCode = require("ajv/dist/standalone").default
 
-const ajvInstance = new Ajv({ allErrors: true });
+const ajvInstance = new Ajv({ allErrors: true,  regExp: RE2});
+
 addFormats(ajvInstance);
 
 module.exports = ajvInstance;

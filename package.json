@@ -20,6 +20,8 @@
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "needle": "^3.0.0",
+    "path": "^0.12.7",
+    "re2": "^1.17.4",
     "request": "^2.88.2",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.3.0"
