@@ -31,7 +31,7 @@ router.post("/songs", validateDto(songSchema), createSong);
  *          '400':
  *              description: Bad GET Request
  */
-router.get("/songs/user/:UserID", validateDto(songSchema), getSongByUserId);
+router.get("/songs/user/:UserID", getSongByUserId);
 
 /**
  * @swagger
