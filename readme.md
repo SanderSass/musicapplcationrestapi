@@ -21,10 +21,12 @@
 ## Testing the API in Postman
 1. Make sure the Authorization type is setted as a 'No auth'. 
 ![Class Diagram](/images/no%20auth.png)
-2. Run a url link 'http://localhost:5000/lfbvo5184sgrg84e' to get jwt key for getting an access to the other CRUD methods.
+
+2. Run a url link to generate jwt key for getting an access to the other CRUD methods. URL link can be found in the report under **Generate a key to access the API**.
+
 3. Locate the key as following:
 ![Class Diagram](/images/jwt%20token%20in%20postman.png)
-Make sure the 'jwt' is freont of the key.
+Make sure the 'jwt' is front of the key.
 4. Then start to test our endpoints to see if its responds correctly using json schemas and respond states.
 
 ## Swagger documentattion
