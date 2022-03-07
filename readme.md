@@ -7,9 +7,7 @@
 * Made by **Music application group**
 
 ## Access to the live database
-* PhpMyAdmin: https://brakelshome.duckdns.org/phpmyadmin/
-* Username: musicapp
-* Password: P@ssw0rdforS@nder
+* Credentials and links are stored in the report.
 
 ## Set up the local API
 1. Download and install latest Xampp.
