@@ -22,7 +22,7 @@ const swaggerOptions = {
             openapi: "3.0.0",
             info:{
                 title: "Secure Programming: MusicApplication RESTful API",
-                version: "1.5",
+                version: "1.6",
                 description: "The API goal is to support Android application MusicApp. Please, to test API, use Postman. Also, accesing to the API, go to readme file.",
                 contact: {
                     name:"Music group from Secure Programming"
