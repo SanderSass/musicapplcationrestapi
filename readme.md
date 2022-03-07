@@ -29,7 +29,7 @@
 Make sure the 'jwt' is front of the key.
 4. Then start to test our endpoints to see if its responds correctly using json schemas and respond states.
 
-## Swagger documentattion
+## Swagger documentation
 Here you find more info of API system docs: **http://localhost:5000/api-docs/**.
 Make sure that the API is in run mode to see the Swagger doc.
 
