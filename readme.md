@@ -22,7 +22,7 @@
 1. Make sure the Authorization type is setted as a 'No auth'. 
 ![Class Diagram](/images/no%20auth.png)
 
-2. Run a url link to generate jwt key for getting an access to the other CRUD methods. URL link can be found in the report under **Generate a key to access the API**.
+2. Run a url link to generate jwt key for getting an access to the other CRUD methods in Postman. URL link can be found in the report under **Generate a key to access the API**.
 
 3. Locate the key as following:
 ![Class Diagram](/images/jwt%20token%20in%20postman.png)
