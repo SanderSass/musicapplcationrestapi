@@ -15,7 +15,7 @@
 3. Then run **start** Apache and MySQL Module on Xampp dashboard.
 4. Open the API project 'musicapplcationrestapi' in Visual Studio Code.
 5. Open terminal and run: "npm start"
-6. if some modules are missed in the project, then in the terminal run: "npm install **moduleName** --save". And **moduleName** replace with missing module that is stated in terminal as a error.
+6. if some modules are missed in the project, then in the terminal run: "npm install **moduleName** --save". And **moduleName** replace with missing module that is stated in terminal as an error.
 7. Then run again in terminal: "npm start"
 
 ## Testing the API in Postman
