@@ -1,4 +1,4 @@
-# Readme for MusicAPI 2021-2022
+# Readme for MusicApplication API 2021-2022
 
 * Oragnization: **NHL Stenden University of Applied Sciences**
 * Subject: **Secure Programming**
