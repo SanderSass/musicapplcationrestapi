@@ -4,7 +4,7 @@
 * Subject: **Secure Programming**
 * Date: **2022, March 6th**
 * Period: **2**
-* Made by **Music application group**
+* Made by **MusicApp group**
 
 ## Access to the live database
 * Credentials and links are stored in the report.
